@@ -26,7 +26,6 @@ class TrailController extends Controller
             $countieFilter='';
             foreach ($filters as $key => $filter) {
                 //迴圈取得所有filter參數
-                list($criteria, $value) = explode(':', $filter);
                 switch ($criteria) {
                     case 'title':
                         $value?$trail->where($criteria, 'like', "%$value%"):'';
