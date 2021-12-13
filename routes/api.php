@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CollectionController;
 use App\Http\Controllers\API\TrailController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserLikeCommentController;
 use App\Http\Controllers\PassportAuthController;
@@ -55,6 +56,8 @@ Route::middleware('auth:api')->get('index', function () {
 });
 
 Route::middleware('cors')->group(function () {
+    Route::get('/country', [CountryController::class, 'index']);
+
     Route::resource('/collection', CollectionController::class);
 
     Route::resource('/trail', TrailController::class);
