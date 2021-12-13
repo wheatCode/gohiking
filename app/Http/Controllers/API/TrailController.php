@@ -38,7 +38,7 @@ class TrailController extends Controller
                 //迴圈取得所有filter參數
                 switch ($key) {
                     case 'title':
-                        $value?$trail->where($key, 'like', "%$filter%"):'';
+                        $filter?$trail->where($key, 'like', "%$filter%"):'';
                         break;
                     case 'difficulty':
                     case 'evaluation':
