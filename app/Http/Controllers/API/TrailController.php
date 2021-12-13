@@ -33,12 +33,10 @@ class TrailController extends Controller
         $userTrail=Favorite::select('trail_id')->where('user_id','=',$request->uuid)->get();
         // 篩選欄位條件
         $result=$trail->get();
-
-        dd($request->filters);
         if (isset($request->filters)) {
-            foreach ($request->$filters as $key => $filter) {
+            foreach ($request->filters as $key => $filter) {
                 //迴圈取得所有filter參數
-                dd($request->$filters ,$filter,$key);
+                dd($request->filters ,$filter,$key);
                 switch ($filter) {
                     case 'title':
                         $value?$trail->where($filter, 'like', "%$value%"):'';
