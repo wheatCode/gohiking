@@ -48,9 +48,9 @@ class TrailController extends Controller
                         }):'';
                         break;
                     case 'collection':
-                        // $value?$trail->whereHas('collections',function($q) use($value){
-                        //     $q->where('collection_id',$value);
-                        // }):'';
+                        $value?$trail->whereHas('collections',function($q) use($value){
+                            $q->where('collection_id',$value);
+                        }):'';
                         break;
                     default:
                         break;
