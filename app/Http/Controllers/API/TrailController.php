@@ -34,16 +34,17 @@ class TrailController extends Controller
         // 篩選欄位條件
         $result=$trail->get();
         if (isset($request->filters)) {
-            foreach ($request->filters as $key => $filter) {
+            $filters= $request->filters;
+            foreach ($filters as $key => $filter) {
                 //迴圈取得所有filter參數
-                dd( $filter,$filter[$key]);
-                switch ($criteria) {
+                $value = $filters[$key];
+                switch ($filter) {
                     case 'title':
-                        $value?$trail->where($criteria, 'like', "%$value%"):'';
+                        $value?$trail->where($filter, 'like', "%$value%"):'';
                         break;
                     case 'difficulty':
                     case 'evaluation':
-                        $value?$trail->where($criteria, '=', "$value"):'';
+                        $value?$trail->where($filter, '=', "$value"):'';
                         break;
                     case 'altitude1':
                         $value?$trail->where('altitude','>=',$value):'';
