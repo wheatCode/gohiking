@@ -34,11 +34,11 @@ class TrailController extends Controller
         // 篩選欄位條件
         $result=$trail->get();
         if (isset($request->filters)) {
-            $filters= $request->filters;
+            $filters = get_object_vars($request->$filters);
             foreach ($filters as $key => $filter) {
                 //迴圈取得所有filter參數
                 $value = $filters[$key];
-                dd( $filters->$filter);
+                dd($value);
                 switch ($filter) {
                     case 'title':
                         $value?$trail->where($filter, 'like', "%$value%"):'';
