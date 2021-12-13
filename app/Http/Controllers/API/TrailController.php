@@ -38,6 +38,7 @@ class TrailController extends Controller
             foreach ($filters as $key => $filter) {
                 //迴圈取得所有filter參數
                 $value = $filters[$key];
+                dd( $value);
                 switch ($filter) {
                     case 'title':
                         $value?$trail->where($filter, 'like', "%$value%"):'';
