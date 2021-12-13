@@ -34,7 +34,6 @@ class TrailController extends Controller
         // 篩選欄位條件
         $result=$trail->get();
         if (isset($request->filters)) {
-            $filters = explode(',', $request->filters);
             foreach ($filters as $key => $filter) {
                 //迴圈取得所有filter參數
                 list($criteria, $value) = explode(':', $filter);
