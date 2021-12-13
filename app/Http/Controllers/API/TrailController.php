@@ -26,13 +26,13 @@ class TrailController extends Controller
             $countieFilter='';
             foreach ($filters as $key => $filter) {
                 //迴圈取得所有filter參數
-                switch ($criteria) {
+                switch ($filter) {
                     case 'title':
-                        $value?$trail->where($criteria, 'like', "%$value%"):'';
+                        $value?$trail->where($filter, 'like', "%$value%"):'';
                         break;
                     case 'difficulty':
                     case 'evaluation':
-                        $value?$trail->where($criteria, '=', "$value"):'';
+                        $value?$trail->where($filter, '=', "$value"):'';
                         break;
                     case 'altitude1':
                         $value?$trail->where('altitude','>=',$value):'';
