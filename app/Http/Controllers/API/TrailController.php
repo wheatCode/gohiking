@@ -36,29 +36,28 @@ class TrailController extends Controller
         if (isset($request->filters)) {
             foreach ($request->filters as $key => $filter) {
                 //迴圈取得所有filter參數
-                dd($request->filters ,$filter,$key);
-                switch ($filter) {
+                switch ($key) {
                     case 'title':
-                        $value?$trail->where($filter, 'like', "%$value%"):'';
+                        $value?$trail->where($key, 'like', "%$filter%"):'';
                         break;
                     case 'difficulty':
                     case 'evaluation':
-                        $value?$trail->where($filter, '=', "$value"):'';
+                        $filter?$trail->where($key, '=', "$filter"):'';
                         break;
                     case 'altitude1':
-                        $value?$trail->where('altitude','>=',$value):'';
+                        $filter?$trail->where('altitude','>=',$filter):'';
                         break;
                     case 'altitude2':
-                        $value?$trail->where('altitude','<=',$value):'';
+                        $filter?$trail->where('altitude','<=',$filter):'';
                         break;
                     case 'county':
-                        $value?$trail->whereHas('location.county',function($q) use($value){
-                            $q->where('name','like',"%$value%");
+                        $filter?$trail->whereHas('location.county',function($q) use($filter){
+                            $q->where('name','like',"%$filter%");
                         }):'';
                         break;
                     case 'collection':
-                        $value?$trail->whereHas('collections',function($q) use($value){
-                            $q->where('collection_id',$value);
+                        $filter?$trail->whereHas('collections',function($q) use($filter){
+                            $q->where('collection_id',$filter);
                         }):'';
                         break;
                     default:
