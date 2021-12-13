@@ -25,16 +25,15 @@ class TrailController extends Controller
         if (isset($request->filters)) {
             $filters = explode(',', $request->filters);
             foreach ($filters as $key => $filter) {
-                $value = $filters[$key];
-                dd($filters[$key],$filter);
                 //迴圈取得所有filter參數
-                switch ($filter) {
+                list($criteria, $value) = explode(':', $filter);
+                switch ($criteria) {
                     case 'title':
-                        $value?$trail->where($filter, 'like', "%$value%"):'';
+                        $value?$trail->where($criteria, 'like', "%$value%"):'';
                         break;
                     case 'difficulty':
                     case 'evaluation':
-                        $value?$trail->where($filter, '=', "$value"):'';
+                        $value?$trail->where($criteria, '=', "$value"):'';
                         break;
                     case 'altitude1':
                         $value?$trail->where('altitude','>=',$value):'';
