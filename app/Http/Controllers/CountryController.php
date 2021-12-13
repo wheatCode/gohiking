@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Country;
+use App\Models\County;
 
 class CountryController extends Controller
 {
@@ -14,7 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $country = Country::all();
+        $country = County::all();
         return  $country;
     }
 
