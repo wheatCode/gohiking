@@ -30,27 +30,27 @@ class TrailController extends Controller
                 list($criteria, $value) = explode(':', $filter);
                 switch ($criteria) {
                     case 'title':
-                        $trail->where($criteria, 'like', "%$value%");
+                        $value?$trail->where($criteria, 'like', "%$value%"):'';
                         break;
                     case 'difficulty':
                     case 'evaluation':
-                        $trail->where($criteria, '=', "$value");
+                        $value?$trail->where($criteria, '=', "$value"):'';
                         break;
                     case 'altitude1':
-                        $trail->where('altitude','>=',$value);
+                        $value?$trail->where('altitude','>=',$value):'';
                         break;
                     case 'altitude2':
-                        $trail->where('altitude','<=',$value);
+                        $value?$trail->where('altitude','<=',$value):'';
                         break;
                     case 'county':
-                        $trail->whereHas('location.county',function($q) use($value){
+                        $value?$trail->whereHas('location.county',function($q) use($value){
                             $q->where('name','like',"%$value%");
-                        });
+                        }):'';
                         break;
                     case 'collection':
-                        $trail->whereHas('collections',function($q) use($value){
+                        $value?$trail->whereHas('collections',function($q) use($value){
                             $q->where('collection_id',$value);
-                        });
+                        }):'';
                         break;
                     default:
                         break;
