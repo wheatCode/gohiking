@@ -18,6 +18,17 @@ class TrailController extends Controller
      */
     public function index(Request $request)
     {
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $trail = Trail::with('location','location.county')->where('id','>=',1);
         $userTrail=Favorite::select('trail_id')->where('user_id','=',$request->uuid)->get();
         // 篩選欄位條件
@@ -69,17 +80,6 @@ class TrailController extends Controller
             }
         }
         return $result;
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
