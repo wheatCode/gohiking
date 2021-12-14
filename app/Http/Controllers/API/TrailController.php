@@ -34,8 +34,8 @@ class TrailController extends Controller
         // 篩選欄位條件
         if (isset($request->filters)) {
             if($request->input('filters.altitude1') == $request->input('filters.altitude2')){
-                $altitude1 = null;
-                $altitude2 = $request->input('filters.altitude2');
+                $altitude1 = $request->input('filters.altitude2');
+                $altitude2 = null;
             } else{
                 $altitude1 = $request->input('filters.altitude1');
                 $altitude2 = $request->input('filters.altitude2');
@@ -56,10 +56,10 @@ class TrailController extends Controller
                         $filter?$trail->where('classification_id',$filter):'';
                         break;
                     case 'altitude1':
-                        $altitude1?$trail->where('altitude','<=',$altitude1):'';
+                        $altitude1?$trail->where('altitude','>=',$altitude1):'';
                         break;
                     case 'altitude2':
-                        $altitude2?$trail->where('altitude','>=',$altitude2):'';
+                        $altitude2?$trail->where('altitude','<=',$altitude2):'';
                         break;
                     case 'county':
                         $filter?$trail->whereHas('location.county',function($q) use($filter){
