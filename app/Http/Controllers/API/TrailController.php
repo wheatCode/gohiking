@@ -33,7 +33,13 @@ class TrailController extends Controller
         $userTrail=Favorite::select('trail_id')->where('user_id','=',$request->uuid)->get();
         // 篩選欄位條件
         if (isset($request->filters)) {
-            if($request->input('filters.altitude1') == $request->input('filters.altitude2')) $request->input('filters.altitude1',null);
+            if($request->input('filters.altitude1') == $request->input('filters.altitude2')){
+                $altitude1 = null;
+                $altitude2 = $request->input('filters.altitude2');
+            } else{
+                $altitude1 = $request->input('filters.altitude1');
+                $altitude2 = $request->input('filters.altitude2');
+            }
             foreach ($request->filters as $key => $filter) {
                 //迴圈取得所有filter參數
                 switch ($key) {
@@ -50,10 +56,10 @@ class TrailController extends Controller
                         $filter?$trail->where('classification_id',$filter):'';
                         break;
                     case 'altitude1':
-                        $filter?$trail->where('altitude','>=',$filter):'';
+                        $filter?$trail->where('altitude','>=',$altitude1):'';
                         break;
                     case 'altitude2':
-                        $filter?$trail->where('altitude','<=',$filter):'';
+                        $filter?$trail->where('altitude','<=',$altitude2):'';
                         break;
                     case 'county':
                         $filter?$trail->whereHas('location.county',function($q) use($filter){
