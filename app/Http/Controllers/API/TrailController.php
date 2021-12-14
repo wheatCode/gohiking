@@ -33,6 +33,7 @@ class TrailController extends Controller
         $userTrail=Favorite::select('trail_id')->where('user_id','=',$request->uuid)->get();
         // 篩選欄位條件
         if (isset($request->filters)) {
+            if($request->filters->altitude1 ==$request->filters->altitude2) $request->filters->altitude1 = null;
             foreach ($request->filters as $key => $filter) {
                 //迴圈取得所有filter參數
                 switch ($key) {
