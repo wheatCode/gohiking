@@ -49,10 +49,10 @@ class TrailController extends Controller
                         $filter?$trail->where('classification_id',$filter):'';
                         break;
                     case 'altitude1':
-                        $filter?$trail->where('altitude','<=',$filter):'';
+                        $filter?$trail->where('altitude','>=',$filter):'';
                         break;
                     case 'altitude2':
-                        $filter?$trail->where('altitude','>=',$filter):'';
+                        $filter?$trail->where('altitude','<=',$filter):'';
                         break;
                     case 'county':
                         $filter?$trail->whereHas('location.county',function($q) use($filter){
