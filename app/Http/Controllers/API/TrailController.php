@@ -32,8 +32,6 @@ class TrailController extends Controller
         $trail = Trail::with('location','location.county')->where('id','>=',1);
         $userTrail=Favorite::select('trail_id')->where('user_id','=',$request->uuid)->get();
         // 篩選欄位條件
-        $result=$trail->get();
-        dd($result);
         if (isset($request->filters)) {
             foreach ($request->filters as $key => $filter) {
                 //迴圈取得所有filter參數
@@ -70,8 +68,8 @@ class TrailController extends Controller
                         break;
                 }
             }
-            $result=$trail->get();
         }
+        $result=$trail->get();
         for($i=0;$i<count($result);$i++)
         {
             $result[$i]["favorite"]=false;
