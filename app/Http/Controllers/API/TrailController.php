@@ -45,7 +45,7 @@ class TrailController extends Controller
                         $filter?$trail->where('difficulty',$filter):'';
                         break;
                     case 'evaluation':
-                        $filter?$trail->where('evalution',$filter):'';
+                        $filter?$trail->where('evaluation',$filter):'';
                         break;
                     case 'classification':
                         $filter?$trail->where('classification_id',$filter):'';
