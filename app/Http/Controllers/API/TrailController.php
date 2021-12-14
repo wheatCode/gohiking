@@ -42,6 +42,7 @@ class TrailController extends Controller
                         break;
                     case 'difficulty':
                         $filter?$trail->where('difficulty',$filter):'';
+                        break;
                     case 'evaluation':
                         $filter?$trail->where('evalution',$filter):'';
                         break;
