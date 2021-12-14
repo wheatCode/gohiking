@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnouncementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CollectionController;
+use App\Http\Controllers\API\CountryCodeController;
 use App\Http\Controllers\API\TrailController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
@@ -57,6 +58,8 @@ Route::middleware('auth:api')->get('index', function () {
 
 Route::middleware('cors')->group(function () {
     Route::get('/country', [CountryController::class, 'index']);
+
+    Route::resource('/countrycode', CountryCodeController::class);
 
     Route::resource('/collection', CollectionController::class);
 
