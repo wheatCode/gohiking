@@ -59,7 +59,7 @@ Route::middleware('auth:api')->get('index', function () {
 Route::middleware('cors')->group(function () {
     Route::get('/country', [CountryController::class, 'index']);
 
-    Route::resource('/countrycode', CountryCodeController::class);
+    Route::get('/countrycode', [CountryCodeController::class,'index']);
 
     Route::resource('/collection', CollectionController::class);
 
