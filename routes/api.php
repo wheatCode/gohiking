@@ -3,9 +3,9 @@
 use App\Http\Controllers\AnnouncementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\CollectionController;
-use App\Http\Controllers\API\CountryCodeController;
-use App\Http\Controllers\API\TrailController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\TrailController;
+use App\Http\Controllers\CountryCodeController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserLikeCommentController;
