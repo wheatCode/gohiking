@@ -4,7 +4,6 @@ use App\Http\Controllers\AnnouncementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\TrailController;
 use App\Http\Controllers\CountryCodeController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
@@ -17,6 +16,7 @@ use App\Http\Controllers\AttractionController;
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\TrailController;
 use App\Http\Controllers\TrailHeadController;
 use App\Http\Controllers\TrailInfoController;
 
