@@ -95,13 +95,13 @@ class UserController extends Controller
                     $user[$key] = $item;
                     break;
                 case 'image':
-                    if ($item) {
-                        if ($this->upload_s3($item)) {
-                            $user[$key] = $this->upload_s3($item);
-                        } else {
-                            return '上傳失敗';
-                        }
-                    }
+                    // if ($item) {
+                    //     if ($this->upload_s3($item)) {
+                    //         $user[$key] = $this->upload_s3($item);
+                    //     } else {
+                    //         return '上傳失敗';
+                    //     }
+                    // }
                     break;
                 case 'county_id':
                     $checkCountyId = County::where('id', $item)->get('id');
