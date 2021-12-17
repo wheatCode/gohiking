@@ -103,8 +103,8 @@ class UserController extends Controller
                         }
                     }
                     break;
-                case 'county':
-                    $checkCountyId = County::where('name', $item)->get('id');
+                case 'county_id':
+                    $checkCountyId = County::where('id', $item)->get('id');
                     if (count($checkCountyId))
                         $user->county_id = $checkCountyId[0]->id;
                     else
@@ -138,7 +138,7 @@ class UserController extends Controller
                 'gender' => 'bail|required|in:0,1',
                 'phone_number' => 'bail|required',
                 'birth' => 'bail|required|date|before:' . date("Y/m/d"),
-                'county' => 'bail|required|max:3|min:3'
+                'county_id' => 'bail|required'
             ];
     }
 
@@ -154,9 +154,7 @@ class UserController extends Controller
                 'birth.required' => '生日必填',
                 'birth.date' => '生日格式錯誤',
                 'birth.before' => '生日時間不能大於:date',
-                'county.required' => '居住地必填',
-                'county.max' => '居住地最多:max個字',
-                'county.min' => '居住地最少:min個字',
+                'county_id.required' => '居住地必填',
             ];
     }
     private function upload_s3($uploadImage)
