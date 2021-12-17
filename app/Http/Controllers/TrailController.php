@@ -100,7 +100,7 @@ class TrailController extends Controller
     public function show($id)
     {
         //$result = trail::with('location','location.county','users')->find($id); //查詢id動作
-        $result=trail::with('location','location.county','users:id,name')->find($id);
+        $result=trail::with('location','location.county','users:id,name','chip_trail.chip')->find($id);
         return $result;
     }
 
