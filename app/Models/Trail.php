@@ -44,7 +44,7 @@ class Trail extends Model
     {
         return $this->hasMany(Comment::class);
     }
-    public function chips()
+    public function chip_trail()
     {
         return $this->hasMany(ChipTrail::class);
     }
