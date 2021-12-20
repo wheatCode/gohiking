@@ -60,7 +60,7 @@ class FavoritesController extends Controller
         //sql SELECT trail_id FROM `user_trails` WHERE user_id=$id
         // ->where('user_id', $id)->Join('trails', 'favorites.trail_id', '=', 'trails.id')
         $trails = DB::table('favorites')->get();
-        return $trails;
+        return $id;
     }
 
     /**
