@@ -87,7 +87,7 @@ class FavoritesController extends Controller
     
     public function Inquire(Request $request)
     {
-        $userTrail=Favorite::with('trail')->where('user_id','=',$request->uuid)->get();
+        $userTrail=Favorite::with('trail')->get();
         return $userTrail;
     }
 }
