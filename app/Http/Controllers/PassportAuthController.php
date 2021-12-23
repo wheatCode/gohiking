@@ -146,7 +146,6 @@ class PassportAuthController extends Controller
             'verificationCode2.required' => '第三位必填',
             'verificationCode3.required' => '第四位必填',
         ]);
-        $this->validate($request,);
 
         $findUser = User::where('email', $request->email)->where('verification_code_0', $request->verificationCode0)->where('verification_code_1', $request->verificationCode1)->where('verification_code_2', $request->verificationCode2)->where('verification_code_3', $request->verificationCode3)->first();
 
