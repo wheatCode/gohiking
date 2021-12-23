@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 
 class PassportAuthController extends Controller
@@ -130,14 +130,23 @@ class PassportAuthController extends Controller
     }
 
     public function confirmVerificationCodes(Request $request)
-    {
-        $this->validate($request, [
+    {      
+        $validator = Validator::make($request->all(),  
+        [
             'email' => 'required',
             'verificationCode0' => 'required',
             'verificationCode1' => 'required',
             'verificationCode2' => 'required',
             'verificationCode3' => 'required',
+        ],  
+        [
+            'email.required' => '信箱必填',
+            'verificationCode0.required' => '第一位必填',
+            'verificationCode1.required' => '第二位必填',
+            'verificationCode2.required' => '第三位必填',
+            'verificationCode3.required' => '第四位必填',
         ]);
+        $this->validate($request,);
 
         $findUser = User::where('email', $request->email)->where('verification_code_0', $request->verificationCode0)->where('verification_code_1', $request->verificationCode1)->where('verification_code_2', $request->verificationCode2)->where('verification_code_3', $request->verificationCode3)->first();
 
