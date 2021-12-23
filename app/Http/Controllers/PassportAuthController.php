@@ -152,7 +152,7 @@ class PassportAuthController extends Controller
             $errors = $validator->errors();
             foreach ($errors->all() as $message)
                 $error .= $message . "\n";
-            return response()->json(['error' => $message], 401);
+            return response()->json(['error' => $error], 401);
         }
         $findUser = User::where('email', $request->email)->where('verification_code_0', $request->verificationCode0)->where('verification_code_1', $request->verificationCode1)->where('verification_code_2', $request->verificationCode2)->where('verification_code_3', $request->verificationCode3)->first();
 
