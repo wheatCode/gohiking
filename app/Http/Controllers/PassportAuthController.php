@@ -141,10 +141,10 @@ class PassportAuthController extends Controller
         ],  
         [
             'email.required' => '信箱必填',
-            'verificationCode0.required' => '第一位必填',
-            'verificationCode1.required' => '第二位必填',
-            'verificationCode2.required' => '第三位必填',
-            'verificationCode3.required' => '第四位必填',
+            'verificationCode0.required' => '第一位驗證碼必填',
+            'verificationCode1.required' => '第二位驗證碼必填',
+            'verificationCode2.required' => '第三位驗證碼必填',
+            'verificationCode3.required' => '第四位驗證碼必填',
         ]);
 
         if ($validator->fails()) {
