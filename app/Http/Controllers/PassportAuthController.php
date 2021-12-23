@@ -157,7 +157,7 @@ class PassportAuthController extends Controller
 
         if ($findUser) {
             $token = $findUser->createToken('LaravelAuthApp')->accessToken;
-            return response()->json(['token' => $token], 200);
+            return response()->json(['token' => $token,'message' => '驗證碼正確'], 200);
         } else {
             return response()->json(['error' => '錯誤的驗證碼！'], 401);
         }
