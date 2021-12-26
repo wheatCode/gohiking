@@ -175,7 +175,7 @@ class UserController extends Controller
     {
         $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
         $command = $client->getCommand('GetObject', [
-            'Bucket' => 'monosparta-test',
+            'Bucket' => config('filesystems.s3.bucket'),
             'Key' => $fileName
         ]);
         $request = $client->createPresignedRequest($command, '+7 days');
