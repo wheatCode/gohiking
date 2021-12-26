@@ -48,7 +48,7 @@ class ClassificationController extends Controller
      */
     public function show($id, Request $request)
     {
-        dd($request->uuid);
+        dd($request);
         $classifications = Classification::with('trails', 'trails.location', 'trails.location.county')->find($id);
         $userTrail = Favorite::select('trail_id')->where('user_id', '=', $request->uuid)->get();
         for ($i = 0; $i < count($classifications->trails); $i++) {
