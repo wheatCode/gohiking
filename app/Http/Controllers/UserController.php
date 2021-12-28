@@ -95,7 +95,6 @@ class UserController extends Controller
                     $user[$key] = $item;
                     break;
                 case 'image':
-                    dd($item);
                     if ($item) {
                         if ($this->upload_s3($item)) {
                             $user[$key] = $this->upload_s3($item);
